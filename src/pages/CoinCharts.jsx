@@ -27,7 +27,7 @@ export default function CoinCharts() {
         params: {
           vs_currency: "usd",
           days: 30, // last 30 days
-          apikey : import.meta.env.VITE_CG_API_KEY,
+          apiKey : import.meta.env.VITE_CG_API_KEY,
         },
       })
       .then((res) => {

@@ -16,7 +16,7 @@ export default function News() {
           q: "crypto OR bitcoin OR ethereum OR stock market", 
           sortBy: "publishedAt",
           language: "en",
-         apikey: import.meta.env.VITE_NEWS_API, 
+         apiKey: import.meta.env.VITE_NEWS_API, 
         },
       })
       .then((res) => {
