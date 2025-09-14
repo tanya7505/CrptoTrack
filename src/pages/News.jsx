@@ -11,16 +11,9 @@ export default function News() {
     setError(null);
 
     axios
-      .get("https://newsapi.org/v2/everything", {
-        params: {
-          q: "crypto OR bitcoin OR ethereum OR stock market", 
-          sortBy: "publishedAt",
-          language: "en",
-         apiKey: import.meta.env.VITE_NEWS_API, 
-        },
-      })
+      .get("/api/news") // call the serverless function
       .then((res) => {
-        setArticles(res.data.articles);
+        setArticles(res.data.articles || []);
       })
       .catch((err) => {
         console.error(err);
@@ -51,7 +44,7 @@ export default function News() {
             )}
             <h2 className="text-lg font-semibold mb-2">{article.title}</h2>
             <p className="text-sm text-gray-400 mb-3">
-              {article.description?.slice(0, 100)}...
+              {article.description ? `${article.description.slice(0, 100)}...` : ""}
             </p>
             <a
               href={article.url}
@@ -67,4 +60,3 @@ export default function News() {
     </div>
   );
 }
-
